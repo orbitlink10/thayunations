@@ -16,9 +16,21 @@
 
 <main>
     <section class="relative min-h-screen overflow-hidden">
-        <video class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline preload="metadata" poster="{{ asset('images/addeh-thayu-hero.png') }}" aria-hidden="true">
-            <source src="{{ asset('videos/hero-video.mp4') }}" type="video/mp4">
-        </video>
+        @if($heroYoutubeId)
+            <div class="absolute inset-0 overflow-hidden bg-zinc-950" aria-hidden="true">
+                <iframe
+                    class="absolute left-1/2 top-1/2 aspect-video min-h-full min-w-full -translate-x-1/2 -translate-y-1/2"
+                    src="https://www.youtube.com/embed/{{ $heroYoutubeId }}?autoplay=1&mute=1&controls=0&loop=1&playlist={{ $heroYoutubeId }}&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1"
+                    title="Hero background video"
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    tabindex="-1"
+                ></iframe>
+            </div>
+        @else
+            <video class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline preload="metadata" poster="{{ asset('images/addeh-thayu-hero.png') }}" aria-hidden="true">
+                <source src="{{ asset('videos/hero-video.mp4') }}" type="video/mp4">
+            </video>
+        @endif
         <div class="absolute inset-0 bg-zinc-950/55"></div>
         <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-zinc-950 via-zinc-950/55 to-transparent"></div>
         <div class="relative mx-auto flex min-h-screen max-w-7xl items-center justify-center px-4 pb-16 pt-28 text-center sm:px-6">

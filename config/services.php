@@ -35,4 +35,6 @@ return [
         ],
     ],
 
+    'hero_youtube_url' => env('HERO_YOUTUBE_URL'),
+
 ];
