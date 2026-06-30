@@ -16,6 +16,7 @@
             @auth
                 <nav class="grid gap-1 px-3 pb-6 text-sm">
                     <a class="admin-nav" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                    <a class="admin-nav" href="{{ route('admin.homepage-content.edit') }}">Homepage Content</a>
                     <a class="admin-nav" href="{{ route('admin.songs.index') }}">Songs</a>
                     <a class="admin-nav" href="{{ route('admin.events.index') }}">Events</a>
                     <a class="admin-nav" href="{{ route('admin.services.index') }}">Branding Services</a>

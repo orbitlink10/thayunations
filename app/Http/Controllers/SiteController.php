@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BrandingService;
 use App\Models\Event;
+use App\Models\HomepageContent;
 use App\Models\Inquiry;
 use App\Models\Song;
 use Illuminate\Http\Request;
@@ -12,44 +13,17 @@ class SiteController extends Controller
 {
     public function home()
     {
-        $heroYoutubeUrl = config('services.hero_youtube_url');
+        $homepageContent = HomepageContent::current();
+        $heroYoutubeUrl = $homepageContent->hero_youtube_url;
 
         return view('site.home', [
+            'homepageContent' => $homepageContent,
             'featuredSong' => Song::where('is_published', true)->where('is_featured', true)->latest('release_date')->first(),
             'songs' => Song::where('is_published', true)->latest('release_date')->take(6)->get(),
             'events' => Event::where('is_published', true)->where('event_date', '>=', now())->orderBy('event_date')->take(4)->get(),
             'services' => BrandingService::where('is_published', true)->latest()->get(),
-            'heroYoutubeId' => $heroYoutubeUrl ? $this->youtubeVideoId($heroYoutubeUrl) : null,
+            'heroYoutubeId' => HomepageContent::youtubeVideoId($heroYoutubeUrl),
         ]);
-    }
-
-    private function youtubeVideoId(string $url): ?string
-    {
-        $host = parse_url($url, PHP_URL_HOST);
-        $path = trim(parse_url($url, PHP_URL_PATH) ?? '', '/');
-
-        if (! $host) {
-            return preg_match('/^[A-Za-z0-9_-]{11}$/', $url) ? $url : null;
-        }
-
-        if (str_contains($host, 'youtu.be')) {
-            return preg_match('/^[A-Za-z0-9_-]{11}$/', $path) ? $path : null;
-        }
-
-        if (str_contains($host, 'youtube.com')) {
-            if (in_array(str($path)->before('/')->toString(), ['embed', 'shorts', 'live'], true)) {
-                $id = str($path)->after('/')->before('/')->toString();
-
-                return preg_match('/^[A-Za-z0-9_-]{11}$/', $id) ? $id : null;
-            }
-
-            parse_str(parse_url($url, PHP_URL_QUERY) ?? '', $query);
-            $id = $query['v'] ?? null;
-
-            return is_string($id) && preg_match('/^[A-Za-z0-9_-]{11}$/', $id) ? $id : null;
-        }
-
-        return null;
     }
 
     public function buyTicket(Request $request, Event $event)

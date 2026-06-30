@@ -2,6 +2,7 @@
 @section('content')
 <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
     <div><h1 class="text-3xl font-black">Dashboard</h1><p class="mt-1 text-zinc-500">Monitor content, ticket reservations, and branding inquiries.</p></div>
+    <a class="btn" href="{{ route('admin.homepage-content.edit') }}">Homepage Content</a>
 </div>
 <div class="mt-6 grid gap-4 sm:grid-cols-3">
     <div class="stat"><span>Songs</span><strong>{{ $songCount }}</strong></div>

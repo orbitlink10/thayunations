@@ -35,13 +35,23 @@
         <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-zinc-950 via-zinc-950/55 to-transparent"></div>
         <div class="relative mx-auto flex min-h-screen max-w-7xl items-center justify-center px-4 pb-16 pt-28 text-center sm:px-6">
             <div class="max-w-4xl">
-                <p class="mb-4 text-sm font-bold uppercase tracking-[0.25em] text-amber-300">Music. Tickets. Branding.</p>
-                <h1 class="text-5xl font-black leading-none sm:text-7xl">Addeh Prince & Thayu Nation</h1>
-                <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-zinc-100">The official platform for upcoming releases, live experiences, and sharp Kenyan branding services for businesses, events, and creative campaigns.</p>
-                <div class="mt-8 flex flex-wrap justify-center gap-3">
-                    <a href="https://www.youtube.com/@iamaddehprince" target="_blank" class="rounded-md bg-white px-5 py-3 font-bold text-zinc-950">Watch on YouTube</a>
-                    <a href="https://music.apple.com/us/artist/addeh-prince/1689935496" target="_blank" class="rounded-md border border-white/40 bg-white/10 px-5 py-3 font-bold text-white backdrop-blur">Apple Music</a>
-                </div>
+                @if($homepageContent->hero_eyebrow)
+                    <p class="mb-4 text-sm font-bold uppercase tracking-[0.25em] text-amber-300">{{ $homepageContent->hero_eyebrow }}</p>
+                @endif
+                <h1 class="text-5xl font-black leading-none sm:text-7xl">{{ $homepageContent->hero_title }}</h1>
+                @if($homepageContent->hero_subtitle)
+                    <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-zinc-100">{{ $homepageContent->hero_subtitle }}</p>
+                @endif
+                @if(($homepageContent->primary_button_label && $homepageContent->primary_button_url) || ($homepageContent->secondary_button_label && $homepageContent->secondary_button_url))
+                    <div class="mt-8 flex flex-wrap justify-center gap-3">
+                        @if($homepageContent->primary_button_label && $homepageContent->primary_button_url)
+                            <a href="{{ $homepageContent->primary_button_url }}" target="_blank" class="rounded-md bg-white px-5 py-3 font-bold text-zinc-950">{{ $homepageContent->primary_button_label }}</a>
+                        @endif
+                        @if($homepageContent->secondary_button_label && $homepageContent->secondary_button_url)
+                            <a href="{{ $homepageContent->secondary_button_url }}" target="_blank" class="rounded-md border border-white/40 bg-white/10 px-5 py-3 font-bold text-white backdrop-blur">{{ $homepageContent->secondary_button_label }}</a>
+                        @endif
+                    </div>
+                @endif
             </div>
         </div>
     </section>
