@@ -20,7 +20,7 @@
             <div class="absolute inset-0 overflow-hidden bg-zinc-950" aria-hidden="true">
                 <iframe
                     class="pointer-events-none absolute left-1/2 top-1/2 border-0"
-                    style="width: max(100vw, 177.78vh); height: max(56.25vw, 100vh); transform: translate(-50%, -50%);"
+                    style="width: max(160vw, 284.45vh); height: max(90vw, 160vh); transform: translate(-50%, -50%);"
                     src="https://www.youtube.com/embed/{{ $heroYoutubeId }}?autoplay=1&mute=1&controls=0&loop=1&playlist={{ $heroYoutubeId }}&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1"
                     title="Hero background video"
                     allow="autoplay; encrypted-media; picture-in-picture"
@@ -32,8 +32,8 @@
                 <source src="{{ asset('videos/hero-video.mp4') }}" type="video/mp4">
             </video>
         @endif
-        <div class="absolute inset-0 bg-zinc-950/55"></div>
-        <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-zinc-950 via-zinc-950/55 to-transparent"></div>
+        <div class="absolute inset-0 bg-zinc-950/35"></div>
+        <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-zinc-950 via-zinc-950/35 to-transparent"></div>
         <div class="relative mx-auto flex min-h-screen max-w-7xl items-center justify-center px-4 pb-16 pt-28 text-center sm:px-6">
             <div class="max-w-4xl">
                 @if($homepageContent->hero_eyebrow)
