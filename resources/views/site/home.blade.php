@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('content')
-<header class="fixed inset-x-0 top-0 z-20 border-b border-white/10 bg-zinc-950/80 backdrop-blur">
+<header class="fixed inset-x-0 top-0 z-20">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
         <a href="#" class="text-lg font-black tracking-normal">Addeh Prince</a>
         <nav class="hidden items-center gap-6 text-sm text-zinc-300 md:flex">
@@ -20,7 +20,7 @@
             <div class="absolute inset-0 overflow-hidden bg-zinc-950" aria-hidden="true">
                 <iframe
                     class="pointer-events-none absolute left-1/2 top-1/2 border-0"
-                    style="width: max(100vw, 177.78vh); height: max(100vh, 177.78vw); transform: translate(-50%, -50%);"
+                    style="width: max(100vw, 177.78vh); height: max(56.25vw, 100vh); transform: translate(-50%, -50%);"
                     src="https://www.youtube.com/embed/{{ $heroYoutubeId }}?autoplay=1&mute=1&controls=0&loop=1&playlist={{ $heroYoutubeId }}&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1"
                     title="Hero background video"
                     allow="autoplay; encrypted-media; picture-in-picture"
