@@ -85,21 +85,55 @@
         </div>
     </section>
 
-    <section id="branding" class="mx-auto max-w-7xl px-4 py-20 sm:px-6">
-        <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-            <div><p class="text-sm font-bold uppercase tracking-[0.2em] text-amber-300">Thayu Nation</p><h2 class="mt-2 text-4xl font-black">Branding services in Kenya</h2><p class="mt-5 leading-8 text-zinc-300">From identity systems to launch materials, Thayu Nation helps businesses and creatives look serious across print, merchandise, events, and digital campaigns.</p></div>
-            <div class="grid gap-4 sm:grid-cols-3">
+    <section id="branding" class="bg-white py-20 text-zinc-950">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6">
+            <div class="mb-10 flex flex-col justify-between gap-4 border-b border-zinc-200 pb-6 md:flex-row md:items-end">
+                <div>
+                    <p class="text-sm font-bold uppercase tracking-[0.2em] text-zinc-500">Branding by Addeh</p>
+                    <h2 class="mt-2 text-4xl font-black">Custom apparel and brand merchandise</h2>
+                </div>
+                <p class="max-w-xl leading-7 text-zinc-600">From hoodies and launch merch to full identity systems, Thayu Nation creates branded pieces for teams, events, artists, and businesses.</p>
+            </div>
+
+            <div class="grid gap-7 md:grid-cols-2 xl:grid-cols-4">
+                @foreach([
+                    ['category' => 'Banners', 'name' => 'Telescopic Banner', 'price' => 11000, 'usd' => 87.30, 'image' => 'images/branding-print-products.png', 'position' => '12%'],
+                    ['category' => 'Banners', 'name' => 'Door Framed Banner', 'price' => 5500, 'usd' => 43.65, 'image' => 'images/branding-print-products.png', 'position' => '38%'],
+                    ['category' => 'Banners', 'name' => 'Backdrop Banner Printing', 'price' => 25500, 'usd' => 202.38, 'image' => 'images/branding-print-products.png', 'position' => '64%'],
+                    ['category' => 'Marketing Collateral and Publications', 'name' => 'Bookmark Printing', 'price' => 940, 'usd' => 7.46, 'image' => 'images/branding-print-products.png', 'position' => '88%'],
+                ] as $product)
+                    <article class="overflow-hidden rounded-[2rem] border border-zinc-200 bg-white shadow-sm">
+                        <div class="relative h-64 overflow-hidden bg-zinc-50">
+                            <span class="absolute left-6 top-5 z-10 rounded-xl bg-white px-4 py-3 text-sm font-black text-zinc-800 shadow-sm">{{ $product['category'] }}</span>
+                            <div class="h-full bg-contain bg-center bg-no-repeat" style="background-image: url('{{ asset($product['image']) }}'); background-position: {{ $product['position'] }} center; background-size: 390% auto;"></div>
+                        </div>
+                        <div class="p-7">
+                            <h3 class="text-2xl font-black">{{ $product['name'] }}</h3>
+                            <div class="mt-3 flex items-end justify-between gap-4">
+                                <div>
+                                    <p class="text-3xl font-black text-rose-600">KES {{ number_format($product['price']) }}</p>
+                                    <p class="mt-2 text-xl text-slate-500">${{ number_format($product['usd'], 2) }}</p>
+                                </div>
+                                <a href="#branding-order" class="shrink-0 rounded-xl border border-zinc-950 px-5 py-3 text-lg font-black text-zinc-950 transition hover:bg-zinc-950 hover:text-white">Order Now</a>
+                            </div>
+                        </div>
+                    </article>
+                @endforeach
+            </div>
+
+            <div class="mt-12 grid gap-4 md:grid-cols-3">
                 @foreach($services as $service)
-                    <article class="rounded-lg border border-white/10 bg-white/[0.04] p-5">
-                        <p class="text-sm font-bold uppercase text-amber-300">{{ $service->icon }}</p>
+                    <article class="border border-zinc-200 p-5">
+                        <p class="text-sm font-bold uppercase tracking-wide text-zinc-500">{{ $service->icon }}</p>
                         <h3 class="mt-3 text-xl font-black">{{ $service->name }}</h3>
-                        <p class="mt-3 text-sm leading-6 text-zinc-300">{{ $service->description }}</p>
+                        <p class="mt-3 text-sm leading-6 text-zinc-600">{{ $service->description }}</p>
                         @if($service->starting_price)<p class="mt-4 font-bold">From KSh {{ number_format($service->starting_price) }}</p>@endif
                     </article>
                 @endforeach
             </div>
         </div>
-        <form method="POST" action="{{ route('inquiries.store') }}" class="mt-12 grid gap-3 rounded-lg bg-white p-5 text-zinc-950 md:grid-cols-2">
+
+        <form id="branding-order" method="POST" action="{{ route('inquiries.store') }}" class="mx-auto mt-12 grid max-w-7xl gap-3 px-4 sm:px-6 md:grid-cols-2">
             @csrf
             <input name="name" placeholder="Your name" class="field" required>
             <input name="email" type="email" placeholder="Email address" class="field" required>
