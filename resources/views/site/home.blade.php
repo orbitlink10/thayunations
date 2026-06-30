@@ -107,18 +107,64 @@
                             <span class="absolute left-6 top-5 z-10 rounded-xl bg-white px-4 py-3 text-sm font-black text-zinc-800 shadow-sm">{{ $product['category'] }}</span>
                             <div class="h-full bg-contain bg-center bg-no-repeat" style="background-image: url('{{ asset($product['image']) }}'); background-position: {{ $product['position'] }} center; background-size: 390% auto;"></div>
                         </div>
-                        <div class="p-7">
-                            <h3 class="text-2xl font-black">{{ $product['name'] }}</h3>
-                            <div class="mt-3 flex items-end justify-between gap-4">
+                        <div class="p-6">
+                            <h3 class="text-xl font-black leading-tight">{{ $product['name'] }}</h3>
+                            <div class="mt-4 flex items-end justify-between gap-3">
                                 <div>
-                                    <p class="text-3xl font-black text-rose-600">KES {{ number_format($product['price']) }}</p>
-                                    <p class="mt-2 text-xl text-slate-500">${{ number_format($product['usd'], 2) }}</p>
+                                    <p class="text-2xl font-black text-rose-600">KES {{ number_format($product['price']) }}</p>
+                                    <p class="mt-2 text-base text-slate-500">${{ number_format($product['usd'], 2) }}</p>
                                 </div>
-                                <a href="#branding-order" class="shrink-0 rounded-xl border border-zinc-950 px-5 py-3 text-lg font-black text-zinc-950 transition hover:bg-zinc-950 hover:text-white">Order Now</a>
+                                <a href="#branding-order" class="shrink-0 rounded-xl border border-zinc-950 px-4 py-2 text-base font-black text-zinc-950 transition hover:bg-zinc-950 hover:text-white">Order Now</a>
                             </div>
                         </div>
                     </article>
                 @endforeach
+            </div>
+
+            <div class="mt-16">
+                <div class="mb-6">
+                    <p class="text-sm font-bold uppercase tracking-[0.2em] text-rose-500">Printing & Branding</p>
+                    <h3 class="mt-2 text-3xl font-black">Plain branded hoodies</h3>
+                </div>
+                <div class="grid gap-7 lg:grid-cols-3">
+                    @foreach([
+                        ['name' => 'Red Hoodie', 'description' => 'Branded Plain Hoodie - Fleece', 'price' => 2500, 'position' => '15%'],
+                        ['name' => 'Lime Green Hoodie', 'description' => 'Branded Plain Hoodie - Fleece', 'price' => 2500, 'position' => '50%'],
+                        ['name' => 'Maroon Hoodie', 'description' => 'Branded Plain Hoodie - Fleece', 'price' => 2500, 'position' => '85%'],
+                    ] as $hoodie)
+                        <article class="border border-zinc-200 bg-zinc-100">
+                            <div class="h-80 border-b border-zinc-200 bg-white bg-contain bg-center bg-no-repeat" style="background-image: url('{{ asset('images/branding-hoodie-products.png') }}'); background-position: {{ $hoodie['position'] }} center; background-size: 310% auto;"></div>
+                            <div class="p-6">
+                                <h4 class="text-2xl font-light text-zinc-600">{{ $hoodie['name'] }}</h4>
+                                <p class="mt-6 text-lg font-medium text-zinc-600">{{ $hoodie['description'] }}</p>
+                                <div class="mt-7 flex items-center justify-between gap-4">
+                                    <a href="#branding-order" class="rounded-md bg-rose-600 px-7 py-4 text-lg font-bold text-white transition hover:bg-rose-700">Add to cart</a>
+                                    <p class="text-xl font-bold text-zinc-600">Shs&nbsp; {{ number_format($hoodie['price']) }}</p>
+                                </div>
+                            </div>
+                        </article>
+                    @endforeach
+                </div>
+                <div class="mt-7 grid gap-7 md:grid-cols-2 xl:grid-cols-4">
+                    @foreach([
+                        ['name' => 'Black Hoodie', 'description' => 'Branded Plain Hoodie - Fleece', 'price' => 2500, 'position' => '12%'],
+                        ['name' => 'Orange Hoodie', 'description' => 'Branded Plain Hoodie - Fleece', 'price' => 2500, 'position' => '38%'],
+                        ['name' => 'Yellow Hoodie', 'description' => 'Branded Plain Hoodie - Fleece', 'price' => 2500, 'position' => '64%'],
+                        ['name' => 'White Hoodie', 'description' => 'Branded Plain Hoodie - Fleece', 'price' => 2500, 'position' => '88%'],
+                    ] as $hoodie)
+                        <article class="border border-zinc-200 bg-zinc-100">
+                            <div class="h-80 border-b border-zinc-200 bg-white bg-contain bg-center bg-no-repeat" style="background-image: url('{{ asset('images/branding-hoodie-products-2.png') }}'); background-position: {{ $hoodie['position'] }} center; background-size: 390% auto;"></div>
+                            <div class="p-6">
+                                <h4 class="text-2xl font-light text-zinc-600">{{ $hoodie['name'] }}</h4>
+                                <p class="mt-6 text-lg font-medium text-zinc-600">{{ $hoodie['description'] }}</p>
+                                <div class="mt-7 flex items-center justify-between gap-4">
+                                    <a href="#branding-order" class="rounded-md bg-rose-600 px-7 py-4 text-lg font-bold text-white transition hover:bg-rose-700">Add to cart</a>
+                                    <p class="text-xl font-bold text-zinc-600">Shs&nbsp; {{ number_format($hoodie['price']) }}</p>
+                                </div>
+                            </div>
+                        </article>
+                    @endforeach
+                </div>
             </div>
 
             <div class="mt-12 grid gap-4 md:grid-cols-3">
