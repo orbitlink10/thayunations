@@ -7,22 +7,28 @@
         <nav class="hidden items-center gap-6 text-sm text-zinc-300 md:flex">
             <a href="#music">Music</a><a href="#tickets">Tickets</a><a href="#branding">Thayu Nation</a><a href="{{ route('admin.login') }}">Admin</a>
         </nav>
-        <a href="#tickets" class="rounded-md bg-amber-400 px-4 py-2 text-sm font-bold text-zinc-950">Buy tickets</a>
+        <div class="flex items-center gap-2">
+            <a href="#tickets" class="rounded-md bg-amber-400 px-4 py-2 text-sm font-bold text-zinc-950">Buy tickets</a>
+            <a href="#branding" class="rounded-md border border-white/20 px-4 py-2 text-sm font-bold text-white transition hover:border-amber-300 hover:text-amber-300">Branding by Addeh</a>
+        </div>
     </div>
 </header>
 
 <main>
-    <section class="relative min-h-[92vh] overflow-hidden pt-24">
-        <img src="{{ asset('images/addeh-thayu-hero.png') }}" alt="Music and branding studio campaign visual" class="absolute inset-0 h-full w-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-zinc-950/25"></div>
-        <div class="relative mx-auto grid min-h-[78vh] max-w-7xl items-center px-4 py-16 sm:px-6 lg:grid-cols-[0.9fr_1.1fr]">
-            <div>
+    <section class="relative min-h-screen overflow-hidden">
+        <video class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline preload="metadata" poster="{{ asset('images/addeh-thayu-hero.png') }}" aria-hidden="true">
+            <source src="{{ asset('videos/hero-video.mp4') }}" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-zinc-950/55"></div>
+        <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-zinc-950 via-zinc-950/55 to-transparent"></div>
+        <div class="relative mx-auto flex min-h-screen max-w-7xl items-center justify-center px-4 pb-16 pt-28 text-center sm:px-6">
+            <div class="max-w-4xl">
                 <p class="mb-4 text-sm font-bold uppercase tracking-[0.25em] text-amber-300">Music. Tickets. Branding.</p>
-                <h1 class="max-w-3xl text-5xl font-black leading-none sm:text-7xl">Addeh Prince & Thayu Nation</h1>
-                <p class="mt-6 max-w-2xl text-lg leading-8 text-zinc-200">The official platform for upcoming releases, live experiences, and sharp Kenyan branding services for businesses, events, and creative campaigns.</p>
-                <div class="mt-8 flex flex-wrap gap-3">
+                <h1 class="text-5xl font-black leading-none sm:text-7xl">Addeh Prince & Thayu Nation</h1>
+                <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-zinc-100">The official platform for upcoming releases, live experiences, and sharp Kenyan branding services for businesses, events, and creative campaigns.</p>
+                <div class="mt-8 flex flex-wrap justify-center gap-3">
                     <a href="https://www.youtube.com/@iamaddehprince" target="_blank" class="rounded-md bg-white px-5 py-3 font-bold text-zinc-950">Watch on YouTube</a>
-                    <a href="https://music.apple.com/us/artist/addeh-prince/1689935496" target="_blank" class="rounded-md border border-white/30 px-5 py-3 font-bold text-white">Apple Music</a>
+                    <a href="https://music.apple.com/us/artist/addeh-prince/1689935496" target="_blank" class="rounded-md border border-white/40 bg-white/10 px-5 py-3 font-bold text-white backdrop-blur">Apple Music</a>
                 </div>
             </div>
         </div>
