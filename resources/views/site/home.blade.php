@@ -19,7 +19,7 @@
         @if($heroYoutubeId)
             <div class="absolute inset-0 overflow-hidden bg-zinc-950" aria-hidden="true">
                 <iframe
-                    class="absolute left-1/2 top-1/2 aspect-video min-h-full min-w-full -translate-x-1/2 -translate-y-1/2"
+                    class="hero-youtube-frame"
                     src="https://www.youtube.com/embed/{{ $heroYoutubeId }}?autoplay=1&mute=1&controls=0&loop=1&playlist={{ $heroYoutubeId }}&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1"
                     title="Hero background video"
                     allow="autoplay; encrypted-media; picture-in-picture"
