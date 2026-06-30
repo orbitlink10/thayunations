@@ -20,7 +20,7 @@
             <div class="absolute inset-0 overflow-hidden bg-zinc-950" aria-hidden="true">
                 <iframe
                     class="pointer-events-none absolute left-1/2 top-1/2 border-0"
-                    style="width: max(160vw, 284.45vh); height: max(90vw, 160vh); transform: translate(-50%, -50%);"
+                    style="width: max(240vw, 426.67vh); height: max(135vw, 240vh); transform: translate(-50%, -50%);"
                     src="https://www.youtube.com/embed/{{ $heroYoutubeId }}?autoplay=1&mute=1&controls=0&loop=1&playlist={{ $heroYoutubeId }}&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1"
                     title="Hero background video"
                     allow="autoplay; encrypted-media; picture-in-picture"
