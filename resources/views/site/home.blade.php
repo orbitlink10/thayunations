@@ -147,33 +147,7 @@
                 @endif
             </div>
 
-            <div class="grid gap-7 md:grid-cols-2 xl:grid-cols-4">
-                @foreach([
-                    ['category' => 'Banners', 'name' => 'Telescopic Banner', 'price' => 11000, 'usd' => 87.30, 'image' => 'images/branding-print-products.png', 'position' => '12%'],
-                    ['category' => 'Banners', 'name' => 'Door Framed Banner', 'price' => 5500, 'usd' => 43.65, 'image' => 'images/branding-print-products.png', 'position' => '38%'],
-                    ['category' => 'Banners', 'name' => 'Backdrop Banner Printing', 'price' => 25500, 'usd' => 202.38, 'image' => 'images/branding-print-products.png', 'position' => '64%'],
-                    ['category' => 'Marketing Collateral and Publications', 'name' => 'Bookmark Printing', 'price' => 940, 'usd' => 7.46, 'image' => 'images/branding-print-products.png', 'position' => '88%'],
-                ] as $product)
-                    <article class="overflow-hidden rounded-[2rem] border border-zinc-200 bg-white shadow-sm">
-                        <div class="relative h-64 overflow-hidden bg-zinc-50">
-                            <span class="absolute left-6 top-5 z-10 rounded-xl bg-white px-4 py-3 text-sm font-black text-zinc-800 shadow-sm">{{ $product['category'] }}</span>
-                            <div class="h-full bg-contain bg-center bg-no-repeat" style="background-image: url('{{ asset($product['image']) }}'); background-position: {{ $product['position'] }} center; background-size: 390% auto;"></div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-black leading-tight">{{ $product['name'] }}</h3>
-                            <div class="mt-4 flex items-end justify-between gap-3">
-                                <div>
-                                    <p class="text-2xl font-black text-rose-600">KES {{ number_format($product['price']) }}</p>
-                                    <p class="mt-2 text-base text-slate-500">${{ number_format($product['usd'], 2) }}</p>
-                                </div>
-                                <a href="#branding-order" class="shrink-0 rounded-xl border border-zinc-950 px-4 py-2 text-base font-black text-zinc-950 transition hover:bg-zinc-950 hover:text-white">Order Now</a>
-                            </div>
-                        </div>
-                    </article>
-                @endforeach
-            </div>
-
-            <div class="mt-16">
+            <div>
                 <div class="mb-6">
                     @if($homepageContent->products_eyebrow)
                         <p class="text-sm font-bold uppercase tracking-[0.2em] text-rose-500">{{ $homepageContent->products_eyebrow }}</p>
