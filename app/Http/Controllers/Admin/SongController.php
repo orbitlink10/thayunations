@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\HomepageContent;
 use App\Models\Song;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class SongController extends Controller
 {
@@ -79,6 +81,12 @@ class SongController extends Controller
             'apple_music_url' => ['nullable', 'url', 'max:255'],
             'spotify_url' => ['nullable', 'url', 'max:255'],
         ]);
+
+        if (! empty($data['youtube_url']) && ! HomepageContent::youtubeVideoId($data['youtube_url'])) {
+            throw ValidationException::withMessages([
+                'youtube_url' => 'Enter a specific YouTube video URL, not a channel or playlist URL.',
+            ]);
+        }
 
         $data['slug'] = Str::slug($data['title']).'-'.Str::random(5);
         $data['is_featured'] = $request->boolean('is_featured');

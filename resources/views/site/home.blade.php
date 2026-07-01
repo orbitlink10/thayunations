@@ -76,7 +76,18 @@
         <div class="grid gap-5 md:grid-cols-3">
             @forelse($songs as $song)
                 <article class="rounded-lg border border-white/10 bg-white/[0.04] p-5">
-                    <div class="mb-5 aspect-square rounded-md bg-gradient-to-br from-zinc-800 to-emerald-900/60 @if($song->cover_image) bg-cover bg-center @endif" @if($song->cover_image) style="background-image:url('{{ asset('storage/'.$song->cover_image) }}')" @endif></div>
+                    @php($songYoutubeId = \App\Models\HomepageContent::youtubeVideoId($song->youtube_url))
+                    <div class="mb-5 aspect-square overflow-hidden rounded-md bg-gradient-to-br from-zinc-800 to-emerald-900/60 @if($song->cover_image && ! $songYoutubeId) bg-cover bg-center @endif" @if($song->cover_image && ! $songYoutubeId) style="background-image:url('{{ asset('storage/'.$song->cover_image) }}')" @endif>
+                        @if($songYoutubeId)
+                            <iframe
+                                class="h-full w-full border-0"
+                                src="https://www.youtube.com/embed/{{ $songYoutubeId }}?rel=0&modestbranding=1"
+                                title="{{ $song->title }} video"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                            ></iframe>
+                        @endif
+                    </div>
                     <p class="text-sm text-zinc-400">{{ optional($song->release_date)->format('M d, Y') ?? 'Coming soon' }}</p>
                     <h3 class="mt-1 text-2xl font-black">{{ $song->title }}</h3>
                     <p class="mt-3 text-sm leading-6 text-zinc-300">{{ $song->description }}</p>

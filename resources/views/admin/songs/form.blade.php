@@ -8,7 +8,7 @@
     <textarea class="field" name="description" rows="4" placeholder="Description">{{ old('description',$song->description) }}</textarea>
     <input class="field" name="release_date" type="date" value="{{ old('release_date', optional($song->release_date)->format('Y-m-d')) }}">
     <input class="field" name="cover_image" type="file" accept="image/*">
-    <input class="field" name="youtube_url" placeholder="YouTube URL" value="{{ old('youtube_url',$song->youtube_url) }}">
+    <input class="field" name="youtube_url" placeholder="YouTube video URL, for example https://www.youtube.com/watch?v=VIDEO_ID" value="{{ old('youtube_url',$song->youtube_url) }}">
     <input class="field" name="apple_music_url" placeholder="Apple Music URL" value="{{ old('apple_music_url',$song->apple_music_url) }}">
     <input class="field" name="spotify_url" placeholder="Spotify URL" value="{{ old('spotify_url',$song->spotify_url) }}">
     <label class="check"><input type="checkbox" name="is_featured" value="1" @checked(old('is_featured',$song->is_featured))> Featured release</label>
