@@ -60,14 +60,13 @@
     @if(session('success'))<div class="mx-auto mt-8 max-w-7xl px-4 sm:px-6"><div class="rounded-md bg-emerald-400 px-5 py-4 font-bold text-emerald-950">{{ session('success') }}</div></div>@endif
 
     <section id="music" class="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+        @php($musicTitle = $homepageContent->music_title ?: 'Featured Music.')
         <div class="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
                 @if($homepageContent->music_eyebrow)
                     <p class="text-sm font-bold uppercase tracking-[0.2em] text-amber-300">{{ $homepageContent->music_eyebrow }}</p>
                 @endif
-                @if($homepageContent->music_title)
-                    <h2 class="mt-2 text-4xl font-black">{{ $homepageContent->music_title }}</h2>
-                @endif
+                <h2 class="mt-2 text-5xl font-black leading-none sm:text-6xl">{{ $musicTitle }}</h2>
             </div>
             @if($homepageContent->music_cta_label && $homepageContent->music_cta_url)
                 <a href="{{ $homepageContent->music_cta_url }}" target="_blank" class="text-sm font-bold text-amber-300">{{ $homepageContent->music_cta_label }}</a>
