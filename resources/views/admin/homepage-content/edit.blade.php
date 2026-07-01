@@ -152,4 +152,48 @@
 
     <button class="btn">Save homepage content</button>
 </form>
+
+<section class="panel mt-6">
+    <div class="toolbar">
+        <div>
+            <h2 class="text-2xl font-black">Music release cards</h2>
+            <p class="mt-1 text-zinc-500">Edit the songs that appear under the music section on the homepage.</p>
+        </div>
+        <a class="btn" href="{{ route('admin.songs.create') }}">New song</a>
+    </div>
+
+    <div class="mt-5 grid gap-4 lg:grid-cols-2">
+        @forelse($songs as $song)
+            <article class="rounded-lg border border-zinc-200 bg-white p-4">
+                <div class="flex gap-4">
+                    <div
+                        class="h-24 w-24 shrink-0 rounded-md bg-gradient-to-br from-zinc-200 to-emerald-900/40 bg-cover bg-center"
+                        @if($song->cover_image) style="background-image:url('{{ asset('storage/'.$song->cover_image) }}')" @endif
+                    ></div>
+                    <div class="min-w-0 flex-1">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <h3 class="text-xl font-black">{{ $song->title }}</h3>
+                            @if($song->is_featured)
+                                <span class="rounded-full bg-amber-100 px-2 py-1 text-xs font-bold text-amber-800">Featured</span>
+                            @endif
+                            @unless($song->is_published)
+                                <span class="rounded-full bg-zinc-100 px-2 py-1 text-xs font-bold text-zinc-600">Hidden</span>
+                            @endunless
+                        </div>
+                        <p class="mt-1 text-sm text-zinc-500">{{ optional($song->release_date)->format('M d, Y') ?? 'No release date' }}</p>
+                        <p class="mt-2 line-clamp-2 text-sm text-zinc-600">{{ $song->description ?: 'No description added.' }}</p>
+                        <div class="mt-4 flex flex-wrap gap-3 text-sm font-bold">
+                            <a class="text-emerald-700" href="{{ route('admin.songs.edit', $song) }}">Edit song</a>
+                            <a class="text-zinc-600" href="{{ route('admin.songs.index') }}">Manage all songs</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        @empty
+            <div class="rounded-lg border border-dashed border-zinc-300 bg-white p-6 text-zinc-500">
+                No songs have been added yet. Create a song to show it in this homepage section.
+            </div>
+        @endforelse
+    </div>
+</section>
 @endsection

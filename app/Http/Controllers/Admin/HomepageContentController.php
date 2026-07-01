@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\HomepageContent;
+use App\Models\Song;
 use Illuminate\Http\Request;
 
 class HomepageContentController extends Controller
@@ -12,6 +13,7 @@ class HomepageContentController extends Controller
     {
         return view('admin.homepage-content.edit', [
             'content' => HomepageContent::current(),
+            'songs' => Song::latest('release_date')->latest()->take(6)->get(),
         ]);
     }
 
