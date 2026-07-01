@@ -49,7 +49,7 @@ class HomepageContent extends Model
             'secondary_button_label' => 'Apple Music',
             'secondary_button_url' => 'https://music.apple.com/us/artist/addeh-prince/1689935496',
             'music_eyebrow' => 'Watch the releases',
-            'music_title' => 'Featured Music Videos',
+            'music_title' => 'Featured Music.',
             'music_cta_label' => 'Open video library',
             'music_cta_url' => 'https://www.youtube.com/channel/UCFZGwBiC1KZeWc1FXZieNrA/videos',
             'tickets_eyebrow' => 'Live experiences',
