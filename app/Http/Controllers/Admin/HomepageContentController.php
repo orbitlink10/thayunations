@@ -26,6 +26,21 @@ class HomepageContentController extends Controller
             'primary_button_url' => ['nullable', 'url', 'max:255'],
             'secondary_button_label' => ['nullable', 'string', 'max:80'],
             'secondary_button_url' => ['nullable', 'url', 'max:255'],
+            'music_eyebrow' => ['nullable', 'string', 'max:120'],
+            'music_title' => ['nullable', 'string', 'max:160'],
+            'music_cta_label' => ['nullable', 'string', 'max:80'],
+            'music_cta_url' => ['nullable', 'url', 'max:255'],
+            'tickets_eyebrow' => ['nullable', 'string', 'max:120'],
+            'tickets_title' => ['nullable', 'string', 'max:160'],
+            'branding_eyebrow' => ['nullable', 'string', 'max:120'],
+            'branding_title' => ['nullable', 'string', 'max:160'],
+            'branding_description' => ['nullable', 'string', 'max:500'],
+            'products_eyebrow' => ['nullable', 'string', 'max:120'],
+            'products_title' => ['nullable', 'string', 'max:160'],
+            'services_eyebrow' => ['nullable', 'string', 'max:120'],
+            'services_title' => ['nullable', 'string', 'max:160'],
+            'inquiry_button_label' => ['nullable', 'string', 'max:80'],
+            'footer_text' => ['nullable', 'string', 'max:255'],
         ]);
 
         if (! empty($data['hero_youtube_url']) && ! HomepageContent::youtubeVideoId($data['hero_youtube_url'])) {

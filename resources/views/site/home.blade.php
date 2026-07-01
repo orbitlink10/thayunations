@@ -61,8 +61,17 @@
 
     <section id="music" class="mx-auto max-w-7xl px-4 py-20 sm:px-6">
         <div class="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-            <div><p class="text-sm font-bold uppercase tracking-[0.2em] text-amber-300">Latest music</p><h2 class="mt-2 text-4xl font-black">Promote every release</h2></div>
-            <a href="https://www.youtube.com/channel/UCFZGwBiC1KZeWc1FXZieNrA/videos" target="_blank" class="text-sm font-bold text-amber-300">Open video library</a>
+            <div>
+                @if($homepageContent->music_eyebrow)
+                    <p class="text-sm font-bold uppercase tracking-[0.2em] text-amber-300">{{ $homepageContent->music_eyebrow }}</p>
+                @endif
+                @if($homepageContent->music_title)
+                    <h2 class="mt-2 text-4xl font-black">{{ $homepageContent->music_title }}</h2>
+                @endif
+            </div>
+            @if($homepageContent->music_cta_label && $homepageContent->music_cta_url)
+                <a href="{{ $homepageContent->music_cta_url }}" target="_blank" class="text-sm font-bold text-amber-300">{{ $homepageContent->music_cta_label }}</a>
+            @endif
         </div>
         <div class="grid gap-5 md:grid-cols-3">
             @forelse($songs as $song)
@@ -84,8 +93,12 @@
 
     <section id="tickets" class="bg-white py-20 text-zinc-950">
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
-            <p class="text-sm font-bold uppercase tracking-[0.2em] text-emerald-700">Live experiences</p>
-            <h2 class="mt-2 text-4xl font-black">Upcoming shows and tickets</h2>
+            @if($homepageContent->tickets_eyebrow)
+                <p class="text-sm font-bold uppercase tracking-[0.2em] text-emerald-700">{{ $homepageContent->tickets_eyebrow }}</p>
+            @endif
+            @if($homepageContent->tickets_title)
+                <h2 class="mt-2 text-4xl font-black">{{ $homepageContent->tickets_title }}</h2>
+            @endif
             <div class="mt-10 grid gap-6 lg:grid-cols-2">
                 @foreach($events as $event)
                     <article class="rounded-lg border border-zinc-200 p-6">
@@ -112,10 +125,16 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
             <div class="mb-10 flex flex-col justify-between gap-4 border-b border-zinc-200 pb-6 md:flex-row md:items-end">
                 <div>
-                    <p class="text-sm font-bold uppercase tracking-[0.2em] text-zinc-500">Branding by Addeh</p>
-                    <h2 class="mt-2 text-4xl font-black">Custom apparel and brand merchandise</h2>
+                    @if($homepageContent->branding_eyebrow)
+                        <p class="text-sm font-bold uppercase tracking-[0.2em] text-zinc-500">{{ $homepageContent->branding_eyebrow }}</p>
+                    @endif
+                    @if($homepageContent->branding_title)
+                        <h2 class="mt-2 text-4xl font-black">{{ $homepageContent->branding_title }}</h2>
+                    @endif
                 </div>
-                <p class="max-w-xl leading-7 text-zinc-600">From hoodies and launch merch to full identity systems, Thayu Nation creates branded pieces for teams, events, artists, and businesses.</p>
+                @if($homepageContent->branding_description)
+                    <p class="max-w-xl leading-7 text-zinc-600">{{ $homepageContent->branding_description }}</p>
+                @endif
             </div>
 
             <div class="grid gap-7 md:grid-cols-2 xl:grid-cols-4">
@@ -146,8 +165,12 @@
 
             <div class="mt-16">
                 <div class="mb-6">
-                    <p class="text-sm font-bold uppercase tracking-[0.2em] text-rose-500">Printing & Branding</p>
-                    <h3 class="mt-2 text-3xl font-black">Plain branded hoodies</h3>
+                    @if($homepageContent->products_eyebrow)
+                        <p class="text-sm font-bold uppercase tracking-[0.2em] text-rose-500">{{ $homepageContent->products_eyebrow }}</p>
+                    @endif
+                    @if($homepageContent->products_title)
+                        <h3 class="mt-2 text-3xl font-black">{{ $homepageContent->products_title }}</h3>
+                    @endif
                 </div>
                 <div class="grid gap-7 lg:grid-cols-3">
                     @foreach([
@@ -190,7 +213,18 @@
                 </div>
             </div>
 
-            <div class="mt-12 grid gap-4 md:grid-cols-3">
+            <div class="mt-12">
+                @if($homepageContent->services_eyebrow || $homepageContent->services_title)
+                    <div class="mb-6">
+                        @if($homepageContent->services_eyebrow)
+                            <p class="text-sm font-bold uppercase tracking-[0.2em] text-emerald-700">{{ $homepageContent->services_eyebrow }}</p>
+                        @endif
+                        @if($homepageContent->services_title)
+                            <h3 class="mt-2 text-3xl font-black">{{ $homepageContent->services_title }}</h3>
+                        @endif
+                    </div>
+                @endif
+                <div class="grid gap-4 md:grid-cols-3">
                 @foreach($services as $service)
                     <article class="border border-zinc-200 p-5">
                         <p class="text-sm font-bold uppercase tracking-wide text-zinc-500">{{ $service->icon }}</p>
@@ -199,6 +233,7 @@
                         @if($service->starting_price)<p class="mt-4 font-bold">From KSh {{ number_format($service->starting_price) }}</p>@endif
                     </article>
                 @endforeach
+                </div>
             </div>
         </div>
 
@@ -210,10 +245,10 @@
             <input name="company" placeholder="Business / company" class="field">
             <select name="branding_service_id" class="field md:col-span-2"><option value="">Select service</option>@foreach($services as $service)<option value="{{ $service->id }}">{{ $service->name }}</option>@endforeach</select>
             <textarea name="message" rows="5" placeholder="Tell us what you need branded" class="field md:col-span-2" required></textarea>
-            <button class="rounded-md bg-amber-400 px-5 py-3 font-bold text-zinc-950 md:col-span-2">Send branding inquiry</button>
+            <button class="rounded-md bg-amber-400 px-5 py-3 font-bold text-zinc-950 md:col-span-2">{{ $homepageContent->inquiry_button_label ?: 'Send branding inquiry' }}</button>
         </form>
     </section>
 </main>
 
-<footer class="border-t border-white/10 px-4 py-8 text-center text-sm text-zinc-400">Addeh Prince and Thayu Nation. Built for music, tickets, and Kenyan brand growth.</footer>
+<footer class="border-t border-white/10 px-4 py-8 text-center text-sm text-zinc-400">{{ $homepageContent->footer_text ?: 'Addeh Prince and Thayu Nation. Built for music, tickets, and Kenyan brand growth.' }}</footer>
 @endsection

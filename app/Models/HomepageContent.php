@@ -15,6 +15,21 @@ class HomepageContent extends Model
         'primary_button_url',
         'secondary_button_label',
         'secondary_button_url',
+        'music_eyebrow',
+        'music_title',
+        'music_cta_label',
+        'music_cta_url',
+        'tickets_eyebrow',
+        'tickets_title',
+        'branding_eyebrow',
+        'branding_title',
+        'branding_description',
+        'products_eyebrow',
+        'products_title',
+        'services_eyebrow',
+        'services_title',
+        'inquiry_button_label',
+        'footer_text',
     ];
 
     public static function current(): self
@@ -33,6 +48,21 @@ class HomepageContent extends Model
             'primary_button_url' => 'https://www.youtube.com/@iamaddehprince',
             'secondary_button_label' => 'Apple Music',
             'secondary_button_url' => 'https://music.apple.com/us/artist/addeh-prince/1689935496',
+            'music_eyebrow' => 'Latest music',
+            'music_title' => 'Promote every release',
+            'music_cta_label' => 'Open video library',
+            'music_cta_url' => 'https://www.youtube.com/channel/UCFZGwBiC1KZeWc1FXZieNrA/videos',
+            'tickets_eyebrow' => 'Live experiences',
+            'tickets_title' => 'Upcoming shows and tickets',
+            'branding_eyebrow' => 'Branding by Addeh',
+            'branding_title' => 'Custom apparel and brand merchandise',
+            'branding_description' => 'From hoodies and launch merch to full identity systems, Thayu Nation creates branded pieces for teams, events, artists, and businesses.',
+            'products_eyebrow' => 'Printing & Branding',
+            'products_title' => 'Plain branded hoodies',
+            'services_eyebrow' => 'Branding services',
+            'services_title' => 'Services for teams, events, and campaigns',
+            'inquiry_button_label' => 'Send branding inquiry',
+            'footer_text' => 'Addeh Prince and Thayu Nation. Built for music, tickets, and Kenyan brand growth.',
         ];
     }
 
